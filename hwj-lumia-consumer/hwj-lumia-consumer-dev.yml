@@ -10,7 +10,7 @@ spring:
         enabled: true
         service-id: hwj-lumia-config-server
       username: letrain
-      password: hwj38121
+      password: Hwj38121
       fail-fast: true
       retry:
         max-attempts: 6
