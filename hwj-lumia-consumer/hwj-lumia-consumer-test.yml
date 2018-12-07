@@ -1,11 +1,11 @@
 server:
-  port: 8720
+  port: 8750
 spring:
   application:
-    name: hwj-lumia-consumer-dev
+    name: hwj-lumia-consumer-test
   cloud:
     config:
-      profile: dev
+      profile: test
       discovery:
         enabled: true
         service-id: hwj-lumia-config-server
