@@ -1,0 +1,22 @@
+server:
+  port: 8710
+spring:
+  application:
+    name: hwj-lumia-provider-dev
+  zipkin:
+    base-url: http://localhost:7300
+  sleuth:
+    sampler:
+      percentage: 1.0  #采样比例设置为1.0，也就是全部都需要,Spring Cloud Sleuth有一个Sampler策略，可以通过这个实现类来控制采样算法。采样器不会阻碍span相关id的产生，但是会对导出以及附加事件标签的相关操作造成影响。 Sleuth默认采样算法的实现是Reservoir sampling，具体的实现类是PercentageBasedSampler，默认的采样比例为: 0.1(即10%)。不过我们可以通过spring.sleuth.sampler.percentage来设置，所设置的值介于0.0到1.0之间，1.0则表示全部采集。
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7000/eureka/
+  instance:
+    #服务过期时间配置,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除
+    lease-expiration-duration-in-seconds: 30
+    #服务刷新时间配置，每隔这个时间会主动心跳一次，默认30s
+    lease-renewal-interval-in-seconds: 15
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    status-page-url-path: ${server.context-path:${SERVER_CONTEXTPATH:}}${management.context-path:${MANAGEMENT_CONTEXTPATH:}}${endpoints.info.path:/manager/login/loginIn}
