@@ -45,4 +45,5 @@ hystrix:
              # 当隔离策略为THREAD时，当执行线程执行超时时，是否进行中断处理，即Future#cancel(true)处理，默认为false
              interruptOnFutureCancel: true
 management:
-  port: 9220
+  security:
+    enabled: false  
