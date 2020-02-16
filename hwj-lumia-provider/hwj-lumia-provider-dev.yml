@@ -32,5 +32,6 @@ eureka:
     #服务刷新时间配置，每隔这个时间会主动心跳一次，默认30s
     lease-renewal-interval-in-seconds: 15
     prefer-ip-address: true
+       ## spring boot 2.0以上的版本改成 spring.cloud.client.ip-address
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
     status-page-url-path: ${server.context-path:${SERVER_CONTEXTPATH:}}${management.context-path:${MANAGEMENT_CONTEXTPATH:}}${endpoints.info.path:/manager/login/loginIn}
