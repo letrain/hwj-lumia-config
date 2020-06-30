@@ -5,6 +5,11 @@ spring:
     name: hwj-meego-gateway-dev
   zipkin:
     base-url: http://192.168.56.101:9300
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: hwj-meego-config-server
 eureka:
   client:
     service-url:
@@ -19,4 +24,4 @@ zuul:
   routes:
     meego:
       path: /lumia/**
-      serviceId: hwj-meego-consumer
+      serviceId: hwj-meego-consumer-dev
