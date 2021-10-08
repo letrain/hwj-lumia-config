@@ -1,0 +1,28 @@
+server:
+  port: 9600
+spring:
+  application:
+    name: hwj-meego-gateway-local
+  zipkin:
+    base-url: http://127.0.0.1:9300
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: hwj-meego-config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.56.102:9800/eureka
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 15
+    lease-expiration-duration-in-seconds: 30
+       ## spring boot 2.0以上的版本改成 spring.cloud.client.ip-address
+#    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    instance-id: ${eureka.instance.ip-address}:${server.port}
+zuul:
+  routes:
+    meego:
+      path: /lumia/**
+      serviceId: hwj-meego-consumer-dev
